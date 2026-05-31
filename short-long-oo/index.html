@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Long and Short OO Sounds</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ========================================= -->
+<!-- SPLASH SCREEN -->
+<!-- ========================================= -->
+
+<div id="splash-screen">
+    <img
+        src="assets/innovine-logo.png"
+        alt="Innovine Logo"
+        id="logo"
+    >
+</div>
+
+<!-- ========================================= -->
+<!-- GAME CONTAINER -->
+<!-- ========================================= -->
+
+<div id="game-container" class="hidden">
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>Long and Short "oo" Sounds</h1>
+
+        <div id="instruction-box">
+
+            <p>
+                Drag each picture to the correct monster.
+            </p>
+
+            <p>
+                Listen to the word. Then drag the picture to the correct monster.
+            </p>
+
+            <p>
+                👈 Drag LEFT to the Book Monster if you hear the short oo sound, like <strong>book</strong>.
+            </p>
+
+            <p>
+                👉 Drag RIGHT to the Moon Monster if you hear the long oo sound, like <strong>moon</strong>.
+            </p>
+
+        </div>
+
+        <div id="top-controls">
+
+            <button id="replayInstructionsBtn">
+                🔊 Replay Instructions
+            </button>
+
+            <button id="replayWordBtn">
+                🔈 Hear Word Again
+            </button>
+
+            <div id="score">
+                Score: <span id="scoreValue">0</span> / 18
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ========================================= -->
+    <!-- MONSTER AREA -->
+    <!-- ========================================= -->
+
+    <main>
+
+        <section id="monster-area">
+
+            <!-- LEFT MONSTER -->
+
+            <div
+                class="monster drop-zone"
+                id="bookMonster"
+                data-category="short"
+            >
+
+                <img
+                    src="assets/book-monster.png"
+                    alt="Book Monster"
+                >
+
+                <h2>BOOK MONSTER</h2>
+
+                <p>
+                    Short "oo" like BOOK
+                </p>
+
+            </div>
+
+            <!-- RIGHT MONSTER -->
+
+            <div
+                class="monster drop-zone"
+                id="moonMonster"
+                data-category="long"
+            >
+
+                <img
+                    src="assets/moon-monster.png"
+                    alt="Moon Monster"
+                >
+
+                <h2>MOON MONSTER</h2>
+
+                <p>
+                    Long "oo" like MOON
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- ========================================= -->
+        <!-- FEEDBACK AREA -->
+        <!-- ========================================= -->
+
+        <div id="feedback-container">
+
+            <div id="correctFeedback" class="feedback hidden">
+
+                <div class="symbol correct-symbol">
+                    ✅
+                </div>
+
+                <div class="message">
+                    Great Job!
+                </div>
+
+                <div class="claps">
+                    👏 👏 👏
+                </div>
+
+            </div>
+
+            <div id="wrongFeedback" class="feedback hidden">
+
+                <div class="symbol wrong-symbol">
+                    ❌
+                </div>
+
+                <div class="message">
+                    Try Again
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================================= -->
+        <!-- WORD CARD AREA -->
+        <!-- ========================================= -->
+
+        <section id="card-section">
+
+            <div
+                id="wordCard"
+                draggable="true"
+            >
+
+                <button id="speakerBtn">
+                    🔊
+                </button>
+
+                <img
+                    id="cardImage"
+                    src=""
+                    alt=""
+                >
+
+                <div id="cardWord">
+                    WORD
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- ========================================= -->
+<!-- END SCREEN -->
+<!-- ========================================= -->
+
+<div id="end-screen" class="hidden">
+
+    <div class="end-card">
+
+        <h1>
+            🎉 Congratulations!
+        </h1>
+
+        <h2>
+            You fed both monsters!
+        </h2>
+
+        <div id="finalScore">
+            Final Score: 18 / 18
+        </div>
+
+        <div id="stars">
+            ⭐⭐⭐⭐⭐
+        </div>
+
+        <button id="playAgainBtn">
+            Play Again
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- AUDIO FILES -->
+<!-- ========================================= -->
+
+<audio
+    id="correctSound"
+    preload="auto"
+>
+    <source
+        src="assets/correct.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+
+<audio
+    id="wrongSound"
+    preload="auto"
+>
+    <source
+        src="assets/wrong.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+
+<audio
+    id="backgroundMusic"
+    preload="auto"
+    loop
+>
+    <source
+        src="assets/background music.mp3"
+        type="audio/mpeg"
+    >
+</audio>
+
+<!-- ========================================= -->
+<!-- LOADING SCREEN -->
+<!-- ========================================= -->
+
+<div id="loading-overlay">
+
+    <div class="loader">
+
+        Loading Game...
+
+    </div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- FOOTER -->
+<!-- ========================================= -->
+
+<footer>
+
+    <small>
+        Long and Short "oo" Sounds Learning Game
+    </small>
+
+</footer>
+
+<!-- ========================================= -->
+<!-- SCRIPT -->
+<!-- ========================================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
