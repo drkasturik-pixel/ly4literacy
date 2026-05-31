@@ -1,0 +1,568 @@
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background:#f7f9fc;
+}
+
+/* =========================================
+   UTILITIES
+========================================= */
+
+.hidden{
+    display:none !important;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+    border-radius:14px;
+    padding:10px 18px;
+    font-size:1rem;
+    font-weight:bold;
+    background:#ffd86b;
+    color:#333;
+    transition:0.2s;
+}
+
+button:hover{
+    transform:scale(1.03);
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+/* =========================================
+   SPLASH SCREEN
+========================================= */
+
+#splashScreen{
+    position:fixed;
+    inset:0;
+    background:#ffffff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.logo-container{
+    animation:fadeInLogo 2s ease;
+}
+
+#logo{
+    width:min(60vw,320px);
+    max-height:60vh;
+    object-fit:contain;
+}
+
+@keyframes fadeInLogo{
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* =========================================
+   GAME CONTAINER
+========================================= */
+
+#gameContainer{
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    background:
+    linear-gradient(
+        to bottom,
+        #fff6d8 0%,
+        #e8f5ff 45%,
+        #f7fff0 100%
+    );
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+header{
+    flex:0 0 auto;
+    padding:8px;
+    text-align:center;
+}
+
+header h1{
+    color:#3a4a66;
+    font-size:clamp(1.2rem,2vw,2rem);
+    margin-bottom:6px;
+}
+
+#instructions{
+    background:#ffffffdd;
+    border-radius:18px;
+    padding:8px 12px;
+    margin:auto;
+    max-width:1200px;
+    border:3px solid #cfe7ff;
+}
+
+#instructions p{
+    font-size:clamp(.72rem,.95vw,1rem);
+    margin:2px 0;
+    color:#333;
+}
+
+#topBar{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:8px;
+}
+
+#scoreBox{
+    background:#dff8d6;
+    padding:10px 18px;
+    border-radius:15px;
+    font-weight:bold;
+    color:#2d5c2f;
+    border:2px solid #a5d89d;
+}
+
+/* =========================================
+   MAIN
+========================================= */
+
+main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+}
+
+/* =========================================
+   MONSTER AREA
+========================================= */
+
+#monsterArea{
+    flex:1;
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+    padding:10px;
+}
+
+.monster{
+    width:42%;
+    height:100%;
+    max-height:320px;
+
+    background:#ffffffcc;
+
+    border-radius:28px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    border:4px solid transparent;
+
+    transition:
+    transform .25s ease,
+    border-color .25s ease,
+    background .25s ease;
+}
+
+.monster img{
+    width:70%;
+    max-height:180px;
+    object-fit:contain;
+}
+
+.monster h2{
+    color:#30465f;
+    margin-top:5px;
+}
+
+.monster p{
+    font-weight:bold;
+    color:#666;
+}
+
+#bookMonster{
+    border-color:#8fd0ff;
+}
+
+#moonMonster{
+    border-color:#d8b8ff;
+}
+
+.monster.drag-over{
+    transform:scale(1.04);
+    background:#fffef3;
+}
+
+/* =========================================
+   CARD SECTION
+========================================= */
+
+#cardSection{
+    height:180px;
+    position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+
+    padding-bottom:10px;
+}
+
+#wordCard{
+
+    width:min(220px,42vw);
+
+    background:#fff;
+
+    border-radius:25px;
+
+    box-shadow:
+    0 6px 20px rgba(0,0,0,.12);
+
+    text-align:center;
+
+    padding:12px;
+
+    position:relative;
+
+    user-select:none;
+    touch-action:none;
+
+    animation:slideUp .7s ease;
+
+    cursor:grab;
+}
+
+#wordCard:active{
+    cursor:grabbing;
+}
+
+#cardImage{
+    width:100%;
+    height:100px;
+    object-fit:contain;
+}
+
+#cardWord{
+    font-size:1.4rem;
+    font-weight:bold;
+    color:#30465f;
+    margin-top:6px;
+}
+
+@keyframes slideUp{
+    from{
+        transform:
+        translateY(220px);
+        opacity:0;
+    }
+
+    to{
+        transform:
+        translateY(0);
+        opacity:1;
+    }
+}
+
+#speakerButton{
+    position:absolute;
+    right:8px;
+    top:8px;
+
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    background:#cfefff;
+}
+
+/* =========================================
+   FEEDBACK LAYER
+========================================= */
+
+#feedbackLayer{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.feedback{
+    text-align:center;
+}
+
+.big-icon{
+    font-size:5rem;
+}
+
+.feedback-text{
+    font-size:2rem;
+    font-weight:bold;
+}
+
+.claps{
+    font-size:2rem;
+    margin-top:8px;
+}
+
+#correctFeedback{
+    color:#27a327;
+}
+
+#wrongFeedback{
+    color:#d32f2f;
+}
+
+/* =========================================
+   HAPPY MONSTER ANIMATION
+========================================= */
+
+.bounce{
+    animation:bounceMonster .5s ease;
+}
+
+@keyframes bounceMonster{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+/* =========================================
+   END SCREEN
+========================================= */
+
+#endScreen{
+    position:fixed;
+    inset:0;
+
+    background:
+    rgba(255,255,255,.96);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:5000;
+}
+
+.end-card{
+
+    width:min(90%,600px);
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.15);
+}
+
+.end-card h1{
+    color:#3f6c3f;
+}
+
+.end-card h2{
+    margin-top:12px;
+    color:#555;
+}
+
+#finalScore{
+    font-size:2rem;
+    margin-top:20px;
+    font-weight:bold;
+}
+
+#starContainer{
+    font-size:2.2rem;
+    margin:20px 0;
+}
+
+/* =========================================
+   LOADING
+========================================= */
+
+#loadingScreen{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:white;
+
+    z-index:10000;
+}
+
+.loading-box{
+    font-size:1.4rem;
+    color:#555;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+    position:fixed;
+    bottom:4px;
+    left:0;
+    width:100%;
+    text-align:center;
+    color:#888;
+    font-size:.75rem;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width:768px){
+
+    header{
+        padding:5px;
+    }
+
+    #instructions{
+        padding:6px;
+    }
+
+    #instructions p{
+        font-size:.72rem;
+    }
+
+    #monsterArea{
+        padding:5px;
+        gap:8px;
+    }
+
+    .monster{
+        width:48%;
+        border-radius:18px;
+    }
+
+    .monster img{
+        width:80%;
+        max-height:120px;
+    }
+
+    .monster h2{
+        font-size:.95rem;
+    }
+
+    .monster p{
+        font-size:.75rem;
+    }
+
+    #cardSection{
+        height:160px;
+    }
+
+    #wordCard{
+        width:160px;
+    }
+
+    #cardImage{
+        height:80px;
+    }
+
+    #cardWord{
+        font-size:1.1rem;
+    }
+
+    .big-icon{
+        font-size:4rem;
+    }
+
+    .feedback-text{
+        font-size:1.4rem;
+    }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width:480px){
+
+    header h1{
+        font-size:1.05rem;
+    }
+
+    #topBar{
+        gap:6px;
+    }
+
+    button{
+        font-size:.8rem;
+        padding:8px 12px;
+    }
+
+    #scoreBox{
+        font-size:.9rem;
+    }
+
+    #cardSection{
+        height:145px;
+    }
+
+    #wordCard{
+        width:145px;
+        padding:8px;
+    }
+
+    #cardImage{
+        height:70px;
+    }
+
+    footer{
+        display:none;
+    }
+}
